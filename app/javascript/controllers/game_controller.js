@@ -1,10 +1,13 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
+    static values = {
+      railsMethod: String
+    }
     static targets = [ "name", "output" ]
 
     connect() {
-        console.log("Hello, Stimulus!", this.element);
+        console.log("Hello, @rails_method!", this.railsMethodValue);
     }
 
     greet() {
