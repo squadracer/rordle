@@ -1,1 +1,8 @@
-<h1><%=@rails_method %></h1>
+<div data-controller="game">
+    <h1 class="text-3xl font-bold underline"><%=@rails_method %></h1>
+    <input data-game-target="name" type="text">
+
+    <button data-action="click->game#greet">Greet</button>
+
+    <span data-game-target="output"></span>
+</div>
