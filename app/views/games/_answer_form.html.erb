@@ -1,0 +1,6 @@
+<%= form_with url: answer_games_path, method: :post do |form| %>
+  <%= form.text_field :answer %>
+  <%= form.hidden_field :answers, value: @answers %>
+  <%= form.hidden_field :rails_method, value: @rails_method %>
+  <%= form.submit "Submit" %>
+<% end %>

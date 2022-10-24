@@ -1,0 +1,21 @@
+<div class="flex flex-col space-y-1">
+    <% 7.times do %>
+        <div class="flex justify-center gap-1">
+            <% @rails_method.size.times do |i|%>
+                <div class="flex justify-center items-center shrink-0 w-10 h-10 border-2 border-red-400 rounded">
+                    <span class="font-semibold"><%=@rails_method[i] %></span>
+                </div>
+            <% end %>
+        </div>
+    <% end %>
+
+    <% @answers.each do |answer| %>
+        <div class="flex justify-center gap-1">
+            <% answer.chars.each do |c|%>
+                <div class="flex justify-center items-center shrink-0 w-10 h-10 border-2 border-red-400 rounded">
+                    <div class="font-semibold"><%=c %></div>
+                </div>
+            <% end %>
+        </div>
+    <% end %>
+</div>
