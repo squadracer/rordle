@@ -4,15 +4,8 @@ export default class extends Controller {
     static values = {
       railsMethod: String
     }
-    static targets = [ "name", "output" ]
 
     connect() {
-        console.log("Hello, @rails_method!", this.railsMethodValue);
-    }
-
-    greet() {
-        console.log("hello");
-        this.outputTarget.textContent =
-        `Hello, ${this.nameTarget.value}!`
+        console.log("Rails method: ", this.railsMethodValue);
     }
 }

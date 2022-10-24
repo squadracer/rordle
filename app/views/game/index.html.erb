@@ -1,8 +1,7 @@
-<div data-controller="game" data-game-rails-method-value=<%=@rails_method %>>
-    <h1 class="text-3xl font-bold underline"><%=@rails_method %></h1>
-    <input data-game-target="name" type="text">
-
-    <button data-action="click->game#greet">Greet</button>
-
-    <span data-game-target="output"></span>
+<div data-controller="game" data-game-rails-method-value=<%=@rails_method %>
+    <ul>
+      <% @rails_method.chars.each do |letter| %>
+          <li><%= letter %></li>
+      <% end %>
+    </ul>
 </div>
