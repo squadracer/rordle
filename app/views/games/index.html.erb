@@ -1,9 +1,9 @@
 <div class="mt-1.5 flex flex-col">
     <h1 class="flex justify-center"><%= @rails_method %></h1>
-    <%= turbo_frame_tag 'answer_form' do %>
-        <%= render 'games/answer_form' %>
-    <% end %>
-    <%= turbo_frame_tag 'answers_grid' do %>
-        <%= render 'games/answers_grid' %>
-    <% end %>
+    <%= render partial: 'games/game',
+        locals: {
+            rails_method: @rails_method,
+            answers: @answers,
+        }
+    %>
 </div>
