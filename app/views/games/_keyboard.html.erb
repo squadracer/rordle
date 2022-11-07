@@ -1,0 +1,6 @@
+<div class="w-64 flex flex-wrap justify-center gap-1">
+    <% alphabet.each do |letter, color| %>
+        <kbd class="mb-1 mx-0.5 flex h-10 w-8 cursor-pointer select-none items-center justify-center rounded <%= "bg-#{color}" %> text-xs font-bold hover:bg-slate-300 active:bg-slate-400"><%= letter %></kbd>
+    <% end %>
+<div>
+
