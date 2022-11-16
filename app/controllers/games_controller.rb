@@ -1,16 +1,15 @@
 class GamesController < ApplicationController
-    # exclude? à trouver et answer = [include?, deep_dup]
     def index
         session[:answers] = []
         session[:rails_method] = random_rails_method.sample.to_s.upcase
         @answers = []
         @rails_method = session[:rails_method]
         @colors = Array.new(6) { Array.new(@rails_method.size) { nil } }
-        @alphabet = (('A'..'Z').to_a + ['?', '_', '!']).map { |char| [char, 'gray-100'] }.to_h
+        @alphabet = init_alphabet
     end
 
     def answer
-        answer = params[:answer].upcase
+        answer = params[:game][:answer].upcase
         session[:answers] << answer if is_a_valid_answer?(answer)
         colors, alphabet = compute_colors(session[:rails_method], session[:answers])
         respond_to do |format|
@@ -34,7 +33,7 @@ class GamesController < ApplicationController
 
     def compute_colors(rails_method, answers)
         colors = Array.new(6) { Array.new(rails_method.size) { nil } }
-        alphabet = (('A'..'Z').to_a + ['?', '_', '!']).map { |char| [char, 'gray-100'] }.to_h
+        alphabet = init_alphabet
         answers.each_with_index do |answer, answer_index|
             remaining_chars = []
             answer.chars.each_with_index do |char, char_index|
@@ -51,7 +50,7 @@ class GamesController < ApplicationController
                     alphabet[char] = 'orange-400' unless alphabet[char] == 'green-400'
                     remaining_chars.delete_at(remaining_chars.index(char) || remaining_chars.length)
                 else
-                    alphabet[char] = 'slate-400' if alphabet[char] == 'gray-100'
+                    alphabet[char] = 'slate-400' if alphabet[char] == 'slate-100'
                 end
             end
 
@@ -69,5 +68,9 @@ class GamesController < ApplicationController
 
     def random_rails_method
         @methods ||= Array.public_instance_methods.grep(/[a-z_?!]+/).map { |method| method.to_s.upcase }
+    end
+
+    def init_alphabet
+        (('A'..'Z').to_a + ['?', '_', '!']).map { |char| [char, 'slate-100'] }.to_h
     end
 end

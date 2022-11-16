@@ -1,5 +1,4 @@
 <%= turbo_frame_tag 'game_turbo_frame' do %>
-  <%= render partial: 'games/answer_form', locals: { rails_method: rails_method, answers: answers} %>
   <%= render partial: 'games/answers_grid', locals: { rails_method: rails_method, answers: answers, colors: colors}  %>
   <%= render partial: 'games/keyboard', locals: { alphabet: alphabet}  %>
 <% end %>

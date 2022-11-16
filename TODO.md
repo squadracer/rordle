@@ -1,0 +1,15 @@
+- ✅ rename 'letter'
+- ✅ bloquer la reception de la touche 'ENTREE' si la longueur de la solution n'est pas bonne
+- pouvoir effacer quand on a taper exactement `rails_method.size` lettres
+- récupérer vraiment toutes les méthodes de bases de Ruby & Rails
+- export le résultat (pour les réseaux sociaux)
+- enlever les méthodes d'une lettre (ex: '!', '?')
+- bug avec : "exclude?" à trouver et answer = [include?, deep_dup]
+- pouvoir gagner le jeu (https://github.com/loonywizard/js-confetti)
+- pouvoir abandonner
+- nombre de lettre de la méthode à trouver
+- ajouter lien vers la doc en fin de partie
+- header / footer
+- explication du jeu (avec la version de Rails et Ruby + liste/façon d'avoir les méthodes)
+- retaper le design (couleurs)
+- animation on reveal

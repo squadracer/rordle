@@ -1,7 +1,18 @@
 <div class="flex justify-center">
     <div class="w-80 flex flex-wrap justify-center gap-1">
         <% alphabet.each do |letter, color| %>
-            <kbd class="mb-1 mx-0.5 flex h-10 w-8 cursor-pointer select-none items-center justify-center rounded border-b-[6px] <%= "border-#{color.gsub(/-.*/,'')}-#{color.gsub(/.*-/,'').to_i-100}" %> <%= "bg-#{color}" %> text-xs font-bold <%= "hover:bg-#{color.gsub(/-.*/,'')}-#{color.gsub(/.*-/,'').to_i+100}" %> hover:border-b-[0px]"><%= letter %></kbd>
+            <kbd class="mb-1 mx-0.5 flex h-10 w-8 
+            cursor-pointer select-none items-center justify-center rounded 
+            text-xs font-bold
+            border-b-[6px] 
+            bg-<%= "#{color}" %>
+            border-<%= "#{color.gsub(/-.*/,'')}-#{color.gsub(/.*-/,'').to_i-100}" %> 
+            hover:bg-<%= "#{color.gsub(/-.*/,'')}-#{color.gsub(/.*-/,'').to_i+100}" %>
+            hover:border-red-100
+            hover:border-b-[0px]
+            hover:border-t-[6px]">
+                <%= letter %>
+            </kbd>
         <% end %>
     </div>
 <div>
