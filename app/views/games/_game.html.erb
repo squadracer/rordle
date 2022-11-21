@@ -1,4 +1,8 @@
-<%= turbo_frame_tag 'game_turbo_frame' do %>
+<%= turbo_frame_tag 'game_turbo_frame', class: "static w-full" do %>
+  <% if game_won %>
+    <%= render partial: 'games/game_won' %>
+  <% end %>
+  <%= render partial: 'layouts/header' %>
   <%= render partial: 'games/answers_grid', locals: { rails_method: rails_method, answers: answers, colors: colors}  %>
   <%= render partial: 'games/keyboard', locals: { alphabet: alphabet}  %>
 <% end %>

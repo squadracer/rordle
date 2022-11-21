@@ -1,11 +1,10 @@
-<div class="mt-1.5 flex flex-col">
-    <!-- <h1 class="flex justify-center"><%= @rails_method %></h1> -->
-    <%= render partial: 'games/game',
-        locals: {
-            rails_method: @rails_method,
-            answers: @answers,
-            colors: @colors,
-            alphabet: @alphabet
-        }
-    %>
-</div>
+<!-- <h1 class="flex justify-center"><%= @rails_method %></h1> -->
+<%= render partial: 'games/game',
+    locals: {
+        rails_method: @rails_method,
+        answers: @answers,
+        game_won: @game_won,
+        colors: @colors,
+        alphabet: @alphabet
+    }
+%>

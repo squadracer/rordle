@@ -9,7 +9,6 @@ export default class Game extends Controller {
       this.pos = [this.lineindexValue, 0];
       this.answer = '';
       this.boundNext = this.next.bind(this);
-      
     }
 
     connect(){
@@ -39,7 +38,7 @@ export default class Game extends Controller {
         }).then (response => response.text()).then(html => Turbo.renderStreamMessage(html));
         this.answer = '';
       } else if (input == 'BACKSPACE' && this.pos[1] > 0) {
-        key.classList.remove("border-blue-600");
+        if (key) key.classList.remove("border-blue-600");
         this.pos[1] -= 1;
         this.answer = this.answer.slice(0, -1);
         const next_key = document.getElementById(this.pos.join('-'));

@@ -2,15 +2,20 @@ class GamesController < ApplicationController
     def index
         session[:answers] = []
         session[:rails_method] = random_rails_method.sample.to_s.upcase
+        session[:game_won] = false
         @answers = []
         @rails_method = session[:rails_method]
+        @game_won = false
         @colors = Array.new(6) { Array.new(@rails_method.size) { nil } }
         @alphabet = init_alphabet
     end
 
     def answer
         answer = params[:game][:answer].upcase
-        session[:answers] << answer if is_a_valid_answer?(answer)
+        if is_a_valid_answer?(answer)
+            session[:answers] << answer 
+            session[:game_won] = answer == session[:rails_method]
+        end
         colors, alphabet = compute_colors(session[:rails_method], session[:answers])
         respond_to do |format|
             format.turbo_stream {
@@ -21,6 +26,7 @@ class GamesController < ApplicationController
                         locals: {
                             rails_method: session[:rails_method],
                             answers: session[:answers],
+                            game_won: session[:game_won],
                             colors: colors,
                             alphabet: alphabet
                         }
@@ -67,7 +73,7 @@ class GamesController < ApplicationController
     end
 
     def random_rails_method
-        @methods ||= Array.public_instance_methods.grep(/[a-z_?!]+/).map { |method| method.to_s.upcase }
+        @methods ||= Array.public_instance_methods.grep(/[a-z_?!]{2,}/).map { |method| method.to_s.upcase }
     end
 
     def init_alphabet
