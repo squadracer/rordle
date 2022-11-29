@@ -55,8 +55,8 @@ class GamesController < ApplicationController
                     colors[answer_index][char_index] = 'orange' unless colors[answer_index][char_index]
                     alphabet[char] = 'orange-400' unless alphabet[char] == 'green-400'
                     remaining_chars.delete_at(remaining_chars.index(char) || remaining_chars.length)
-                else
-                    alphabet[char] = 'slate-400' if alphabet[char] == 'slate-100'
+                elsif alphabet[char] == 'slate-100'
+                    alphabet[char] = 'slate-400'
                 end
             end
 
@@ -73,7 +73,7 @@ class GamesController < ApplicationController
     end
 
     def random_rails_method
-        @methods ||= Array.public_instance_methods.grep(/[a-z_?!]{2,}/).map { |method| method.to_s.upcase }
+        @methods ||= MethodsHelper.filtered_methods
     end
 
     def init_alphabet
