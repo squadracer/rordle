@@ -44,7 +44,7 @@ export default class Game extends Controller {
         const next_key = document.getElementById(this.pos.join('-'));
         next_key.innerHTML = '';
         next_key.classList.add("border-blue-600");
-      } else if (key && /^[A-Z_?!]$/.test(input)) {
+      } else if (key && /^[A-Z_?!]$/.test(input) && !event.getModifierState("Control") && !event.getModifierState("Meta") && !event.getModifierState("Alt") && !event.getModifierState("AltGraph")) {
         this.answer += input;
         key.innerHTML = input;
         key.classList.remove("border-blue-600");
