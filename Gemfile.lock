@@ -119,6 +119,7 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.13.8-x86_64-darwin)
       racc (~> 1.4)
+    pg (1.4.5)
     pry (0.14.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -204,12 +205,14 @@ GEM
 
 PLATFORMS
   x86_64-darwin-20
+  x86_64-darwin-21
 
 DEPENDENCIES
   bootsnap
   capybara
   importmap-rails
   jbuilder
+  pg (~> 1.4)
   pry-byebug
   puma (~> 5.0)
   rails (~> 7.0.4)

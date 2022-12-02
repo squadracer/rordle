@@ -1,7 +1,7 @@
 class GamesController < ApplicationController
     def index
         session[:answers] = []
-        session[:rails_method] = random_rails_method.sample.to_s.upcase
+        session[:rails_method] = random_rails_method.sample
         session[:game_won] = false
         @answers = []
         @rails_method = session[:rails_method]
@@ -13,7 +13,7 @@ class GamesController < ApplicationController
     def answer
         answer = params[:game][:answer].upcase
         if is_a_valid_answer?(answer)
-            session[:answers] << answer 
+            session[:answers] << answer
             session[:game_won] = answer == session[:rails_method]
         end
         colors, alphabet = compute_colors(session[:rails_method], session[:answers])
@@ -73,7 +73,7 @@ class GamesController < ApplicationController
     end
 
     def random_rails_method
-        @methods ||= MethodsHelper.filtered_methods
+        @methods ||= MethodsHelper.filtered_methods.map { |method_name| method_name.to_s.upcase }
     end
 
     def init_alphabet
