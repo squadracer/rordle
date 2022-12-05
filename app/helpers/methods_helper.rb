@@ -4,7 +4,7 @@ module MethodsHelper
 
   def self.list_all_ruby_methods
     ObjectSpace.each_object(Class).flat_map do |klass|
-      methods = klass.public_instance_methods.filter_map { |method| klass.method(method) rescue nil }
+      methods = klass.public_instance_methods.map { |method| klass.instance_method(method) }
       methods.filter { |method| method.source_location.nil? }
              .map { |method| { owner: method.owner, name: method.name } }
     end.uniq
@@ -12,7 +12,7 @@ module MethodsHelper
 
   def self.list_all_rails_methods
     ObjectSpace.each_object(Class).flat_map do |klass|
-      methods = klass.public_instance_methods.filter_map { |method| klass.method(method) rescue nil }
+      methods = klass.public_instance_methods.map { |method| klass.instance_method(method) }
       methods.filter { |method| method.source_location&.first =~ /gems\/(#{GEMS.join('|')})/ }
              .map { |method| { owner: method.owner, name: method.name } }
     end.uniq
@@ -23,6 +23,6 @@ module MethodsHelper
   end
 
   def self.filtered_methods
-    filter_methods(list_all_ruby_methods | list_all_rails_methods).map { |method| method[:name] }
+    @filtered_methods ||= filter_methods(list_all_ruby_methods | list_all_rails_methods).map { |method| method[:name] }
   end
 end
