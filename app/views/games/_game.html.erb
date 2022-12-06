@@ -1,8 +1,10 @@
 <%= turbo_frame_tag 'game_turbo_frame', class: "static w-full" do %>
   <% if game_won %>
-    <%= render partial: 'games/game_won' %>
+    <%= render partial: 'games/game_won', locals: { answers: answers} %>
+  <% elsif answers.size >= 6 %>
+    <%= render partial: 'games/game_lost', locals: { answers: answers} %>
   <% end %>
-  <%= render partial: 'layouts/header' %>
-  <%= render partial: 'games/answers_grid', locals: { rails_method: rails_method, answers: answers, colors: colors}  %>
-  <%= render partial: 'games/keyboard', locals: { alphabet: alphabet}  %>
+  <%= render partial: 'shared/header' %>
+  <%= render partial: 'shared/grid/answers_grid', locals: { rails_method: rails_method, answers: answers, colors: colors}  %>
+  <%= render partial: 'shared/keyboard/keyboard', locals: { alphabet: alphabet}  %>
 <% end %>

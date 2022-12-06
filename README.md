@@ -4,7 +4,6 @@
 
 # BUGS
 - bug avec : "exclude?" à trouver et answer = [include?, deep_dup]
-- le CTRL+R écrit le R avant de refresh
 
 # NEXT FEATURES
 - ajouter lien vers la doc en fin de partie
@@ -15,7 +14,6 @@
 - pouvoir abandonner
 - mettre en ligne
 - mettre sur github
-- récupérer vraiment toutes les méthodes de bases de Ruby & Rails
 # BONUS
 - export le résultat (pour les réseaux sociaux)
 - retaper le design (couleurs)
@@ -33,4 +31,5 @@
 - ✅ pouvoir effacer quand on a taper exactement `rails_method.size` lettres
 - ✅ enlever les méthodes d'une lettre (ex: '!', '?')
 - ✅ pouvoir gagner le jeu (https://github.com/loonywizard/js-confetti)
-
+- ✅ le CTRL+R écrit le R avant de refresh
+- ✅ récupérer vraiment toutes les méthodes de bases de Ruby & Rails
