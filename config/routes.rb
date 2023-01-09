@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   root "games#index"
   resources :games, only: :index do
     post 'answer', on: :collection
+    post 'give_up', on: :collection
   end
 end

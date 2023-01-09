@@ -1,10 +1,11 @@
-<%= turbo_frame_tag 'game_turbo_frame', class: "static w-full" do %>
+<%= turbo_frame_tag 'game_turbo_frame', class: "static h-full w-full flex flex-col justify-between" do %>
   <% if game_won %>
-    <%= render partial: 'games/game_won', locals: { answers: answers} %>
-  <% elsif answers.size >= 6 %>
-    <%= render partial: 'games/game_lost', locals: { answers: answers} %>
+    <%= render partial: 'games/game_won', locals: { rails_method: rails_method, answers: answers} %>
+  <% elsif answers.size >= 6 || gave_up %>
+    <%= render partial: 'games/game_lost', locals: { rails_method: rails_method, answers: answers} %>
   <% end %>
   <%= render partial: 'shared/header' %>
   <%= render partial: 'shared/grid/answers_grid', locals: { rails_method: rails_method, answers: answers, colors: colors}  %>
   <%= render partial: 'shared/keyboard/keyboard', locals: { alphabet: alphabet}  %>
+
 <% end %>

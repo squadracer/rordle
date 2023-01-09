@@ -1,10 +1,10 @@
 <div class="flex flex-col space-y-1 mb-12" data-controller="game" data-game-lineindex-value=<%= answers.size %>>
     <% 6.times do |line_number| %>
-        <div class="flex justify-center gap-1">
+        <div id="line-<%= line_number %>" class="flex justify-center gap-1">
             <% line = answers[line_number] || ' '*rails_method.size %>
             <% line.size.times do |i|%>
                 <% color = colors[line_number][i] %>
-                <div id="<%= "#{line_number}-#{i}" %>" class="flex justify-center items-center shrink-0 w-10 h-10 border-2 <%= "border-#{color ? color + '-400' : 'grey-800' }" %> rounded <%= "bg-#{color || '' }-400 font-semibold" %>">
+                <div id="<%= "#{line_number}-#{i}" %>" class="flex justify-center items-center shrink-0 w-14 h-14 border-2 <%= "border-#{ color || 'red' }-400" %> rounded <%= "bg-#{color || '' }-400 font-semibold" %>">
                     <%= line[i] %>
                 </div>
             <% end %>

@@ -11,8 +11,22 @@ export default class Game extends Controller {
       this.boundNext = this.next.bind(this);
     }
 
-    connect(){
+    async connect(){
       window.addEventListener('keydown', this.boundNext);
+      const last_line_letters = document.getElementById("line-" + (this.pos[0] - 1) ).children;
+      for(let i = 0; i < last_line_letters.length; i++) {
+        last_line_letters[i].classList.add("bg-red-flip");
+        last_line_letters[i].classList.add("border-red-flip");
+      }
+
+      for(let i = 0; i < last_line_letters.length; i++) {
+        setTimeout(() => {
+          console.log(`Hello #${i}`);
+          last_line_letters[i].classList.add("flip");
+          last_line_letters[i].classList.remove("bg-red-flip");
+          last_line_letters[i].classList.remove("border-red-flip");
+        }, 200 * i)
+      }
     }
 
     disconnect() {
@@ -35,7 +49,7 @@ export default class Game extends Controller {
               'X-CSRF-Token': csrfToken
           },
           body: JSON.stringify({ answer: this.answer })
-        }).then (response => response.text()).then(html => Turbo.renderStreamMessage(html));
+        }).then(response => response.text()).then(html => Turbo.renderStreamMessage(html));
         this.answer = '';
       } else if (input == 'BACKSPACE' && this.pos[1] > 0) {
         if (key) key.classList.remove("border-blue-600");

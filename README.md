@@ -2,18 +2,15 @@
 - Add tests
 - Refacto header outside frame_tag (and all it's implcations)
 
-# BUGS
-- bug avec : "exclude?" à trouver et answer = [include?, deep_dup]
-
 # NEXT FEATURES
-- ajouter lien vers la doc en fin de partie
-- perdre quand on arrive à la fin
-- header style
-- footer ?
+- ajouter lien vers la doc en fin de partie (cf: TODO in MethodsHelper)
+- header stylé
 - explication du jeu (avec la version de Rails et Ruby + liste/façon d'avoir les méthodes)
-- pouvoir abandonner
-- mettre en ligne
 - mettre sur github
+- ajouter une animation (shaking) quand on rentre un mot invalide
+- fix heigth header
+- fix bug ending screen
+
 # BONUS
 - export le résultat (pour les réseaux sociaux)
 - retaper le design (couleurs)
@@ -22,6 +19,7 @@
 - faire notre police d'écriture pour avoir les émojis Ruby/RoR
 - ecran de stat
 - keyboard fonctionne plus animation on press du vrai keyboard
+- footer ?
 
 # DONE
 - ✅ header
@@ -33,3 +31,7 @@
 - ✅ pouvoir gagner le jeu (https://github.com/loonywizard/js-confetti)
 - ✅ le CTRL+R écrit le R avant de refresh
 - ✅ récupérer vraiment toutes les méthodes de bases de Ruby & Rails
+- ✅ perdre quand on arrive à la fin
+- ✅ mettre en ligne
+- ✅ pouvoir abandonner
+- ✅ tooltips on buttons

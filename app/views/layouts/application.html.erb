@@ -1,18 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html class="bg-red-100 w-screen h-screen">
   <head>
     <title>RoRdle</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="flex flex-col justify-center items-center">
+  <body class="h-full flex flex-col justify-between items-center">
     <%= yield %>
   </body>
 </html>

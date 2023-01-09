@@ -2,6 +2,7 @@ class GamesController < ApplicationController
     def index
         session[:answers] = []
         session[:rails_method] = random_rails_method.sample
+        session[:rails_method] = "EXCLUDE?"
         session[:game_won] = false
         @answers = []
         @rails_method = session[:rails_method]
@@ -10,12 +11,7 @@ class GamesController < ApplicationController
         @alphabet = init_alphabet
     end
 
-    def answer
-        answer = params[:game][:answer].upcase
-        if is_a_valid_answer?(answer)
-            session[:answers] << answer
-            session[:game_won] = answer == session[:rails_method]
-        end
+    def give_up
         colors, alphabet = compute_colors(session[:rails_method], session[:answers])
         respond_to do |format|
             format.turbo_stream {
@@ -26,7 +22,34 @@ class GamesController < ApplicationController
                         locals: {
                             rails_method: session[:rails_method],
                             answers: session[:answers],
+                            game_won: false,
+                            gave_up: true,
+                            colors: colors,
+                            alphabet: alphabet
+                        }
+                    )
+            }
+        end
+    end
+
+    def answer
+        answer = params[:game][:answer].upcase
+        if is_a_valid_answer?(answer)
+            session[:answers] << answer
+            session[:game_won] = answer == session[:rails_method]
+        end
+        colors, alphabet = compute_colors(session[:rails_method], session[:answers]) 
+        respond_to do |format|
+            format.turbo_stream {
+                render turbo_stream:
+                    turbo_stream.replace(
+                        'game_turbo_frame',
+                        partial: 'games/game',
+                        locals: {
+                            rails_method: session[:rails_method],
+                            answers: session[:answers],
                             game_won: session[:game_won],
+                            gave_up: false,
                             colors: colors,
                             alphabet: alphabet
                         }
