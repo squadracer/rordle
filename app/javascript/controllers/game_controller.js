@@ -2,30 +2,23 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class Game extends Controller {
     static values = {
-      lineindex: Number
+      lineindex: Number,
+      isvalidanswer: Boolean
     }
     
     initialize() {
       this.pos = [this.lineindexValue, 0];
       this.answer = '';
       this.boundNext = this.next.bind(this);
+      this.isValidAnswer = this.isvalidanswerValue;
     }
 
     async connect(){
       window.addEventListener('keydown', this.boundNext);
-      const last_line_letters = document.getElementById("line-" + (this.pos[0] - 1) ).children;
-      for(let i = 0; i < last_line_letters.length; i++) {
-        last_line_letters[i].classList.add("bg-red-flip");
-        last_line_letters[i].classList.add("border-red-flip");
-      }
-
-      for(let i = 0; i < last_line_letters.length; i++) {
-        setTimeout(() => {
-          console.log(`Hello #${i}`);
-          last_line_letters[i].classList.add("flip");
-          last_line_letters[i].classList.remove("bg-red-flip");
-          last_line_letters[i].classList.remove("border-red-flip");
-        }, 200 * i)
+      if (this.isValidAnswer == true) {
+        await flipLetterAnimation(this.pos)
+      } else {
+        await wiggle(this.pos)
       }
     }
 
@@ -67,4 +60,26 @@ export default class Game extends Controller {
         if (next_key) next_key.classList.add("border-blue-600");
       }
     }
+}
+
+
+async function flipLetterAnimation(position) {
+  const last_line_letters = document.getElementById("line-" + (position[0] - 1) ).children;
+  for(let i = 0; i < last_line_letters.length; i++) {
+    last_line_letters[i].classList.add("bg-red-flip");
+    last_line_letters[i].classList.add("border-red-flip");
+  }
+
+  for(let i = 0; i < last_line_letters.length; i++) {
+    setTimeout(() => {
+      last_line_letters[i].classList.add("flip");
+      last_line_letters[i].classList.remove("bg-red-flip");
+      last_line_letters[i].classList.remove("border-red-flip");
+    }, 200 * i)
+  }
+}
+
+async function wiggle(position) {
+  const last_line_letters = document.getElementById("line-" + position[0] );
+  last_line_letters.classList.add("wiggle");
 }

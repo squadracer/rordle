@@ -72,3 +72,5 @@ group :test do
 end
 
 gem "pg", "~> 1.4"
+
+gem "tty_string", "~> 1.1"

@@ -1,0 +1,9 @@
+.end_game_modal {
+  overflow: auto;
+  height: 300px;
+  background-color: #1b1b1b;
+  color: #FFFFFF;
+  text-align: left;
+  padding: 20px;
+  border-radius: 5px;
+}

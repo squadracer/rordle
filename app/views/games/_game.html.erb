@@ -1,11 +1,13 @@
-<%= turbo_frame_tag 'game_turbo_frame', class: "static h-full w-full flex flex-col justify-between" do %>
+<%= turbo_frame_tag 'game_turbo_frame', class: "relative static static h-full w-full flex flex-col justify-between" do %>
+
+  <div class="absolute bg-logo h-full	w-full"></div>
   <% if game_won %>
-    <%= render partial: 'games/game_won', locals: { rails_method: rails_method, answers: answers} %>
+    <%= render partial: 'games/game_won', locals: { rails_method: rails_method, rails_method_doc: rails_method_doc, answers: answers} %>
   <% elsif answers.size >= 6 || gave_up %>
-    <%= render partial: 'games/game_lost', locals: { rails_method: rails_method, answers: answers} %>
+    <%= render partial: 'games/game_lost', locals: { rails_method: rails_method, rails_method_doc: rails_method_doc, answers: answers} %>
   <% end %>
   <%= render partial: 'shared/header' %>
-  <%= render partial: 'shared/grid/answers_grid', locals: { rails_method: rails_method, answers: answers, colors: colors}  %>
+  <%= render partial: 'shared/grid/answers_grid', locals: { rails_method: rails_method, answers: answers, colors: colors, is_valid_answer: is_valid_answer}  %>
   <%= render partial: 'shared/keyboard/keyboard', locals: { alphabet: alphabet}  %>
 
 <% end %>

@@ -8,8 +8,8 @@ export default class GameWon extends Controller {
       const jsConfetti = new JSConfetti();
       jsConfetti.addConfetti({
         emojis: ['❤️', '💎'],
-        emojiSize: 50,
-        confettiNumber: 60
+        emojiSize: 30,
+        confettiNumber: 70
       });
     }
 

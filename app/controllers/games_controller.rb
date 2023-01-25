@@ -2,7 +2,7 @@ class GamesController < ApplicationController
     def index
         session[:answers] = []
         session[:rails_method] = random_rails_method.sample
-        session[:rails_method] = "EXCLUDE?"
+        session[:rails_method] = "FILTER"
         session[:game_won] = false
         @answers = []
         @rails_method = session[:rails_method]
@@ -12,7 +12,7 @@ class GamesController < ApplicationController
     end
 
     def give_up
-        colors, alphabet = compute_colors(session[:rails_method], session[:answers])
+        colors, alphabet = compute_colors(session[:rails_method], session[:answers]) 
         respond_to do |format|
             format.turbo_stream {
                 render turbo_stream:
@@ -22,8 +22,10 @@ class GamesController < ApplicationController
                         locals: {
                             rails_method: session[:rails_method],
                             answers: session[:answers],
-                            game_won: false,
+                            game_won: session[:game_won],
+                            is_valid_answer: false,
                             gave_up: true,
+                            rails_method_doc: @game_won ? MethodsHelper.get_doc(session[:rails_method].downcase) : "",
                             colors: colors,
                             alphabet: alphabet
                         }
@@ -49,7 +51,9 @@ class GamesController < ApplicationController
                             rails_method: session[:rails_method],
                             answers: session[:answers],
                             game_won: session[:game_won],
+                            is_valid_answer: is_a_valid_answer?(answer),
                             gave_up: false,
+                            rails_method_doc: MethodsHelper.get_doc(session[:rails_method].downcase),
                             colors: colors,
                             alphabet: alphabet
                         }

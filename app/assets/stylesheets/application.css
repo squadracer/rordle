@@ -37,6 +37,23 @@
   border-color: rgb(248 113 113 / var(--tw-border-opacity)) !important;
 }
 
+.tile {
+  transition: 2s;
+}
+
+.tile:hover {
+  background-color: rgba(211, 0, 1, 0.05);
+  transition: 0s;
+}
+
+.bg-logo {
+  background-image: url("logos.svg");
+  background-repeat: repeat;
+  background-size: 40%;
+  z-index: -1;
+  opacity: 0.5;
+}
+
 
 @-webkit-keyframes flip-horizontal-bottom {
   0% {
@@ -65,4 +82,16 @@
     -webkit-transform: rotateX(0deg);
             transform: rotateX(0deg);
   }
+}
+
+.wiggle {
+  animation: wiggle 0.4s linear;
+}
+
+@keyframes wiggle {
+  0% {transform: rotate(0deg);}
+  25% {transform: rotate(-3deg);}
+  50% {transform: rotate(5deg);}
+  75% {transform: rotate(-1deg);}
+  100% {transform: rotate(2deg);}
 }
