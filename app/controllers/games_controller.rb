@@ -2,36 +2,15 @@ class GamesController < ApplicationController
     def index
         session[:answers] = []
         session[:rails_method] = random_rails_method.sample
-        session[:rails_method] = "FILTER"
+        session[:rails_method] = "filter".upcase
         session[:game_won] = false
-        @answers = []
         @rails_method = session[:rails_method]
-        @game_won = false
         @colors = Array.new(6) { Array.new(@rails_method.size) { nil } }
         @alphabet = init_alphabet
     end
 
     def give_up
-        colors, alphabet = compute_colors(session[:rails_method], session[:answers]) 
-        respond_to do |format|
-            format.turbo_stream {
-                render turbo_stream:
-                    turbo_stream.replace(
-                        'game_turbo_frame',
-                        partial: 'games/game',
-                        locals: {
-                            rails_method: session[:rails_method],
-                            answers: session[:answers],
-                            game_won: session[:game_won],
-                            is_valid_answer: false,
-                            gave_up: true,
-                            rails_method_doc: @game_won ? MethodsHelper.get_doc(session[:rails_method].downcase) : "",
-                            colors: colors,
-                            alphabet: alphabet
-                        }
-                    )
-            }
-        end
+        send_stream(gave_up: true)
     end
 
     def answer
@@ -40,6 +19,42 @@ class GamesController < ApplicationController
             session[:answers] << answer
             session[:game_won] = answer == session[:rails_method]
         end
+        send_stream(is_a_valid_answer: is_a_valid_answer?(answer))
+    end
+
+    def show_methods
+        respond_to do |format|
+            format.turbo_stream {
+                render turbo_stream:
+                    turbo_stream.replace(
+                        'model_turbo_frame',
+                        partial: 'shared/methods_list',
+                        locals: {
+                            rails_method: session[:rails_method],
+                            answers: session[:answers],
+                            game_won: session[:game_won],
+                            methods_list: same_length_methods_list
+                        }
+                    )
+            }
+        end
+    end
+
+    def hide_methods
+        respond_to do |format|
+            format.turbo_stream {
+                render turbo_stream:
+                    turbo_stream.replace(
+                        'model_turbo_frame',
+                        partial: 'games/hidden_list',
+                    )
+            }
+        end
+    end
+
+    private
+
+    def send_stream(args)
         colors, alphabet = compute_colors(session[:rails_method], session[:answers]) 
         respond_to do |format|
             format.turbo_stream {
@@ -51,8 +66,8 @@ class GamesController < ApplicationController
                             rails_method: session[:rails_method],
                             answers: session[:answers],
                             game_won: session[:game_won],
-                            is_valid_answer: is_a_valid_answer?(answer),
-                            gave_up: false,
+                            is_valid_answer: args[:is_a_valid_answer],
+                            gave_up: args[:gave_up],
                             rails_method_doc: MethodsHelper.get_doc(session[:rails_method].downcase),
                             colors: colors,
                             alphabet: alphabet
@@ -61,8 +76,6 @@ class GamesController < ApplicationController
             }
         end
     end
-
-    private
 
     def compute_colors(rails_method, answers)
         colors = Array.new(6) { Array.new(rails_method.size) { nil } }
@@ -78,9 +91,9 @@ class GamesController < ApplicationController
                 end
             end
             answer.chars.each_with_index do |char, char_index|
-                if remaining_chars.include?(char)
-                    colors[answer_index][char_index] = 'orange' unless colors[answer_index][char_index]
-                    alphabet[char] = 'orange-400' unless alphabet[char] == 'green-400'
+                if colors[answer_index][char_index].nil? && remaining_chars.include?(char)
+                    colors[answer_index][char_index] = 'orange' 
+                    alphabet[char] = 'orange-400'
                     remaining_chars.delete_at(remaining_chars.index(char) || remaining_chars.length)
                 elsif alphabet[char] == 'slate-100'
                     alphabet[char] = 'slate-400'
@@ -99,8 +112,14 @@ class GamesController < ApplicationController
         random_rails_method.include?(answer)
     end
 
+    def same_length_methods_list
+        @same_length_methods_list ||= random_rails_method.uniq.filter {|method_name| method_name.size == session[:rails_method].size}
+    end
+
     def random_rails_method
-        @methods ||= MethodsHelper.filtered_methods.map { |method_name| method_name.to_s.upcase }
+        @methods_list ||= MethodsHelper.filtered_methods
+                                  .map { |method_name| method_name.to_s.upcase }
+                                  .sort_by {|method_name| [method_name.size, method_name] }
     end
 
     def init_alphabet

@@ -3,25 +3,27 @@
 - Refacto header outside frame_tag (and all it's implcations)
 
 # NEXT FEATURES
-- header stylé
-- explication du jeu (avec la version de Rails et Ruby + liste/façon d'avoir les méthodes)
+- explication du jeu (avec la version de Rails et Ruby)
+- liste/façon d'avoir les méthodes
 - mettre sur github
 - mettre en ligne
-- bosser la modal plus jolie
 - accessibilité
 - une game par jour ? à l'infini ? 
-- affichage du dico au choix par défaut caché, que les méthodes de n lettres, (update en real time avec les mots morts enlevés)
-
-# BONUS
-- export le résultat (pour les réseaux sociaux)
-- nombre de lettre de la méthode à trouver
-- faire notre police d'écriture pour avoir les émojis Ruby/RoR
-- ecran de stat
-- keyboard fonctionne plus animation on press du vrai keyboard
 - quand on gagne, laisser profiter de l'animation des lettres vertes puis afficher la modale (actuellement, c'est modale direct)
 
+# DIFFERENTS TYPES D'AIDE POSSIBLE
+- affichage du dico update en real time avec les mots morts enlevés ?
+- donner underscore si trop long (donner le ! ou le ? si il y a)
+- viens de ruby ou de rails
+
+# BONUS
+- bosser la modale plus jolie
+- export le résultat (pour les réseaux sociaux)
+- ecran de stat
+- keyboard fonctionne + animation on press du vrai keyboard
+
 # DONE
-- ✅ header
+- ✅ header stylé
 - ✅ rename 'letter'
 - ✅ bloquer la reception de la touche 'ENTREE' si la longueur de la solution n'est pas bonne
 - ✅ vérouillage du submit si pas toutes le mot rempli
@@ -39,3 +41,4 @@
 - ✅ Background style
 - ✅ retaper le design (couleurs)
 - ✅ animation on reveal (quand on appuie sur entrée pour valider une réponse)
+- ✅ bug lossing screen

@@ -1,5 +1,4 @@
-<div data-controller="game-lost" class="absolute w-full h-full bg-black/20 flex justify-center items-center">
-    <div class="flex flex-col justify-center items-center p-6 bg-white rounded-sm md:mx-auto">
+<%= render layout: '/shared/modal', locals: {data_controller_name: "game-lost"} do %>
         <svg viewBox="0 0 24 24" class="text-red-600 w-16 h-16 mx-auto my-3">
             <path fill="currentColor"
                 d="M12,0A12,12,0,1,0,24,12,12.014,12.014,0,0,0,12,0Zm6.927,8.2-6.845,9.289a1.011,1.011,0,0,1-1.43.188L5.764,13.769a1,1,0,1,1,1.25-1.562l4.076,3.261,6.227-8.451A1,1,0,1,1,18.927,8.2Z">
@@ -15,4 +14,4 @@
             <%= render partial: 'shared/end_game_modal/bottom_buttons' %>
         </div>
     </div>
-</div>
+<% end %>

@@ -1,0 +1,7 @@
+.methods_list {
+  overflow: auto;
+  height: 300px;
+  text-align: left;
+  padding: 20px;
+  border-radius: 5px;
+}

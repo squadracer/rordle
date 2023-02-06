@@ -1,12 +1,14 @@
 <!-- <h1 class="flex justify-center"><%= @rails_method %></h1> -->
+<%= render partial: 'games/hidden_list'%>
 <%= render partial: 'games/game',
     locals: {
         rails_method: @rails_method,
-        rails_method_doc: @rails_method_doc,
+        rails_method_doc: '',
         is_valid_answer: true,
-        answers: @answers,
-        game_won: @game_won,
-        gave_up: @gave_up,
+        answers: [],
+        game_won: false,
+        gave_up: false,
+        methods_list: [],
         colors: @colors,
         alphabet: @alphabet
     }

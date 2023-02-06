@@ -1,0 +1,12 @@
+<%= turbo_frame_tag 'modal_turbo_frame', class: "" do %>
+  <div class="flex w-full" style="justify-content:space-around">
+    <h1 class="my-auto mx-2 md:text-2xl text-base text-gray-900 font-semibold">METHODS LIST</h1>
+  </div>
+  <div class="methods_list my-2">
+    <ul>
+    <% methods_list.each do |method_name| %>
+      <li><%= method_name %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
