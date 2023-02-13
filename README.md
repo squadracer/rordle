@@ -4,11 +4,9 @@
 
 # NEXT FEATURES
 - explication du jeu (avec la version de Rails et Ruby)
-- liste/façon d'avoir les méthodes
-- mettre sur github
-- mettre en ligne
+- liste des méthodes
+- afficher les lettres bien placées avant de taper
 - accessibilité
-- une game par jour ? à l'infini ? 
 - quand on gagne, laisser profiter de l'animation des lettres vertes puis afficher la modale (actuellement, c'est modale direct)
 
 # DIFFERENTS TYPES D'AIDE POSSIBLE
@@ -21,6 +19,7 @@
 - export le résultat (pour les réseaux sociaux)
 - ecran de stat
 - keyboard fonctionne + animation on press du vrai keyboard
+- une game par jour ? à l'infini ? 
 
 # DONE
 - ✅ header stylé
@@ -42,3 +41,5 @@
 - ✅ retaper le design (couleurs)
 - ✅ animation on reveal (quand on appuie sur entrée pour valider une réponse)
 - ✅ bug lossing screen
+- ✅ mettre sur github
+- ✅ mettre en ligne

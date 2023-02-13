@@ -2,7 +2,7 @@ class GamesController < ApplicationController
     def index
         session[:answers] = []
         session[:rails_method] = random_rails_method.sample
-        session[:rails_method] = "filter".upcase
+        #session[:rails_method] = "filter".upcase
         session[:game_won] = false
         @rails_method = session[:rails_method]
         @colors = Array.new(6) { Array.new(@rails_method.size) { nil } }
