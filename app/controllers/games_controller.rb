@@ -25,29 +25,29 @@ class GamesController < ApplicationController
     def show_methods
         respond_to do |format|
             format.turbo_stream {
-                render turbo_stream:
-                    turbo_stream.replace(
-                        'model_turbo_frame',
-                        partial: 'shared/methods_list',
-                        locals: {
-                            rails_method: session[:rails_method],
-                            answers: session[:answers],
-                            game_won: session[:game_won],
-                            methods_list: same_length_methods_list
-                        }
-                    )
-            }
-        end
-    end
-
-    def hide_methods
-        respond_to do |format|
-            format.turbo_stream {
-                render turbo_stream:
-                    turbo_stream.replace(
-                        'model_turbo_frame',
-                        partial: 'games/hidden_list',
-                    )
+                    if true # TODO SEB
+                        render turbo_stream:
+                            turbo_stream.replace(
+                                'modal_turbo_frame',
+                                partial: 'shared/methods_list',
+                                locals: {
+                                    rails_method: session[:rails_method],
+                                    answers: session[:answers],
+                                    game_won: session[:game_won],
+                                    methods_list: same_length_methods_list
+                                }
+                            )
+                    else
+                        respond_to do |format|
+                            format.turbo_stream {
+                                render turbo_stream:
+                                    turbo_stream.replace(
+                                        'model_turbo_frame',
+                                        partial: 'games/hidden_list',
+                                    )
+                            }
+                        end
+                    end
             }
         end
     end

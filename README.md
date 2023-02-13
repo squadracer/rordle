@@ -4,10 +4,11 @@
 
 # NEXT FEATURES
 - explication du jeu (avec la version de Rails et Ruby)
-- liste des méthodes
+- WIP(Julien): liste des méthodes
 - afficher les lettres bien placées avant de taper
-- accessibilité
 - quand on gagne, laisser profiter de l'animation des lettres vertes puis afficher la modale (actuellement, c'est modale direct)
+- accessibilité (mode daltonien)
+- animation open method list
 
 # DIFFERENTS TYPES D'AIDE POSSIBLE
 - affichage du dico update en real time avec les mots morts enlevés ?

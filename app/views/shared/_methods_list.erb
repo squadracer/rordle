@@ -1,12 +1,9 @@
-<div id='modal_turbo_frame'>
-  <div class="flex w-full" style="justify-content:space-around">
-    <h1 class="my-auto mx-2 md:text-2xl text-base text-gray-900 font-semibold">METHODS LIST</h1>
-  </div>
-  <div class="methods_list my-2">
-    <ul>
+<%= turbo_frame_tag 'modal_turbo_frame', class: "absolute top-0 left-0 " do %>
+  <div class="overflow-auto h-screen pl-6 pt-16">
+    <ul class="">
     <% methods_list.each do |method_name| %>
-      <li><%= method_name %></li>
+      <li class="text-lg font-bold mt-6 p-2 bg-slate-50 rounded-md	"><%= method_name %></li>
     <% end %>
     </ul>
   </div>
-</div>
+<% end %>

@@ -7,6 +7,5 @@ Rails.application.routes.draw do
     post 'answer', on: :collection
     post 'give_up', on: :collection
     post 'show_methods', on: :collection
-    post 'hide_methods', on: :collection
   end
 end
