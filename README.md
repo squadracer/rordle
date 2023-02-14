@@ -9,6 +9,7 @@
 - quand on gagne, laisser profiter de l'animation des lettres vertes puis afficher la modale (actuellement, c'est modale direct)
 - accessibilité (mode daltonien)
 - animation open method list
+- il ne connait pas "tap" -> il manque des méthodes
 
 # DIFFERENTS TYPES D'AIDE POSSIBLE
 - affichage du dico update en real time avec les mots morts enlevés ?
