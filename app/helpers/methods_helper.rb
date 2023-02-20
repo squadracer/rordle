@@ -1,6 +1,5 @@
 module MethodsHelper
-  GEMS = %w[actioncable actionmailbox actionmailer actionpack actiontext actionview
-            activejob activemodel activerecord activestorage activesupport bundler railties].freeze
+  GEMS = Gem::Specification.find_by_name('rails').dependencies.map(&:name).freeze
 
   def self.list_all_ruby_methods
     ObjectSpace.each_object(Class).flat_map do |klass|
