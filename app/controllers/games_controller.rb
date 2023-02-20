@@ -1,12 +1,22 @@
 class GamesController < ApplicationController
     def index
         session[:answers] = []
-        session[:rails_method] = random_rails_method.sample
-        #session[:rails_method] = "filter".upcase
+        if params[:infinite_mode]
+            session[:rails_method] = random_rails_method.sample
+        else
+            session[:rails_method] = random_rails_method.sample(1, random: Random.new((Date.current - Date.new(2018,04,23)).days.to_i)).first
+        end
         session[:game_won] = false
         @rails_method = session[:rails_method]
         @colors = Array.new(6) { Array.new(@rails_method.size) { nil } }
         @alphabet = init_alphabet
+        @same_length_methods_list = nil
+        @all_methods_list = nil
+        @methods_list = same_length_methods_list
+    end
+
+    def infinite
+        redirect_to controller: 'games', action: :index, infinite_mode: true
     end
 
     def give_up
@@ -20,36 +30,6 @@ class GamesController < ApplicationController
             session[:game_won] = answer == session[:rails_method]
         end
         send_stream(is_a_valid_answer: is_a_valid_answer?(answer))
-    end
-
-    def show_methods
-        respond_to do |format|
-            format.turbo_stream {
-                    if true # TODO SEB
-                        render turbo_stream:
-                            turbo_stream.replace(
-                                'modal_turbo_frame',
-                                partial: 'shared/methods_list',
-                                locals: {
-                                    rails_method: session[:rails_method],
-                                    answers: session[:answers],
-                                    game_won: session[:game_won],
-                                    methods_list: same_length_methods_list
-                                }
-                            )
-                    else
-                        respond_to do |format|
-                            format.turbo_stream {
-                                render turbo_stream:
-                                    turbo_stream.replace(
-                                        'model_turbo_frame',
-                                        partial: 'games/hidden_list',
-                                    )
-                            }
-                        end
-                    end
-            }
-        end
     end
 
     private
@@ -70,7 +50,8 @@ class GamesController < ApplicationController
                             gave_up: args[:gave_up],
                             rails_method_doc: MethodsHelper.get_doc(session[:rails_method].downcase),
                             colors: colors,
-                            alphabet: alphabet
+                            alphabet: alphabet,
+                            methods_list: same_length_methods_list
                         }
                     )
             }
@@ -117,7 +98,7 @@ class GamesController < ApplicationController
     end
 
     def random_rails_method
-        @methods_list ||= MethodsHelper.filtered_methods
+        @all_methods_list ||= MethodsHelper.filtered_methods
                                   .map { |method_name| method_name.to_s.upcase }
                                   .sort_by {|method_name| [method_name.size, method_name] }
     end

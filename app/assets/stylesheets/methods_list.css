@@ -1,7 +1,19 @@
 .methods_list {
-  overflow: auto;
-  height: 300px;
-  text-align: left;
-  padding: 20px;
-  border-radius: 5px;
+  left: -300px; 
+  transition: 1s;
+}
+
+.methods_list > div {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.methods_list > div::-webkit-scrollbar {
+  display: none;
+}
+
+
+.toggle-list {
+  left: 0px;
+  transition: 1s;
 }

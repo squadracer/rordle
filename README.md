@@ -1,27 +1,22 @@
-# WANNA HELP ?
-- Add tests
-- Refacto header outside frame_tag (and all it's implcations)
-
 # NEXT FEATURES
 - explication du jeu (avec la version de Rails et Ruby)
-- WIP(Julien): liste des méthodes
-- afficher les lettres bien placées avant de taper
-- quand on gagne, laisser profiter de l'animation des lettres vertes puis afficher la modale (actuellement, c'est modale direct)
-- accessibilité (mode daltonien)
-- animation open method list
-- il ne connait pas "tap" -> il manque des méthodes
+- header -> remove tooltip et mettre texte
+- erreurs dans la console
 
 # DIFFERENTS TYPES D'AIDE POSSIBLE
 - affichage du dico update en real time avec les mots morts enlevés ?
 - donner underscore si trop long (donner le ! ou le ? si il y a)
 - viens de ruby ou de rails
 
-# BONUS
+# LEVEL UP L'APP
+- afficher les lettres bien placées avant de taper
+- accessibilité (mode daltonien)
 - bosser la modale plus jolie
 - export le résultat (pour les réseaux sociaux)
 - ecran de stat
 - keyboard fonctionne + animation on press du vrai keyboard
-- une game par jour ? à l'infini ? 
+- animation open method list
+- quand on gagne, laisser profiter de l'animation des lettres vertes puis afficher la modale (actuellement, c'est modale direct)
 
 # DONE
 - ✅ header stylé
@@ -45,3 +40,5 @@
 - ✅ bug lossing screen
 - ✅ mettre sur github
 - ✅ mettre en ligne
+- ✅ mode infini
+- ✅ liste des méthodes : cacher au reclic + garder affiché quand on rentre une réponse
