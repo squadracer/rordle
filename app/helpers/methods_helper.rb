@@ -26,6 +26,7 @@ module MethodsHelper
   end
 
   def self.get_doc(method)
+    #RDoc::RI::Driver.run([method]).to_s
     TTYString.parse(`ri "#{method}"`)
   end
 end

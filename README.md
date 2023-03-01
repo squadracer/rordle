@@ -1,7 +1,9 @@
 # NEXT FEATURES
 - explication du jeu (avec la version de Rails et Ruby)
-- header -> remove tooltip et mettre texte
 - erreurs dans la console
+- bug de la doc
+- pouvoir share son score
+- responsive -> bloc ri end_game modal
 
 # DIFFERENTS TYPES D'AIDE POSSIBLE
 - affichage du dico update en real time avec les mots morts enlevés ?
@@ -15,8 +17,10 @@
 - export le résultat (pour les réseaux sociaux)
 - ecran de stat
 - keyboard fonctionne + animation on press du vrai keyboard
-- animation open method list
+
 - quand on gagne, laisser profiter de l'animation des lettres vertes puis afficher la modale (actuellement, c'est modale direct)
+- clic sur le mot l'écrit dans la grille
+- timer
 
 # DONE
 - ✅ header stylé
@@ -42,3 +46,6 @@
 - ✅ mettre en ligne
 - ✅ mode infini
 - ✅ liste des méthodes : cacher au reclic + garder affiché quand on rentre une réponse
+- ✅ header -> remove tooltip et mettre texte
+- ✅ bug affichage au dessus de la modale de fin de partie
+- ✅ animation open method list
