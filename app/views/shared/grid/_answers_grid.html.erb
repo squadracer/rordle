@@ -1,4 +1,4 @@
-<div class="flex flex-col space-y-1" data-game-lineindex-value=<%= answers.size %> data-game-isvalidanswer-value=<%= is_valid_answer %>>
+<div class="flex flex-col space-y-1">
     <% 6.times do |line_number| %>
         <div id="line-<%= line_number %>" class="w-full flex justify-center gap-1 h-14">
             <% line = answers[line_number] || ' '*rails_method.size %>

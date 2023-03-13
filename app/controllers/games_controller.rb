@@ -2,9 +2,9 @@ class GamesController < ApplicationController
     def index
         session[:answers] = []
         if params[:infinite_mode]
-            session[:rails_method] = random_rails_method.sample
+            session[:rails_method] = "FILTER"
         else
-            session[:rails_method] = random_rails_method.sample(1, random: Random.new((Date.current - Date.new(2018,04,23)).days.to_i)).first
+            session[:rails_method] = "FILTER"
         end
         session[:game_won] = false
         @rails_method = session[:rails_method]
@@ -20,7 +20,6 @@ class GamesController < ApplicationController
     end
 
     def explanations
-        Rails.logger.info 'EXPLANATIONS'
         respond_to do |format|
             format.turbo_stream {
                 render turbo_stream:

@@ -7,3 +7,14 @@
   padding: 20px;
   border-radius: 5px;
 }
+
+.show {
+  animation: fade 1.5s;
+}
+
+@keyframes fade {
+  0% {bottom: 0px; opacity: 0;}
+  20% {bottom: -30px; opacity: 1;}
+  80% {bottom: -30px; opacity: 1;}
+  100% {bottom: 0px; opacity: 0;}
+}

@@ -9,8 +9,10 @@ export default class ShareAnswers extends Controller {
 
     copyToClipboard() {
       if (navigator && navigator.clipboard && navigator.clipboard.writeText) {
+        const toast = document.getElementById('copy-toast');
+        toast.classList.add("show");
+        setTimeout(() => { toast.classList.remove("show") }, 1500);
         const shareText = document.getElementById("share_text").innerText;
-        console.log(shareText);
         return navigator.clipboard.writeText(shareText);
       }
       return Promise.reject('The Clipboard API is not available.');

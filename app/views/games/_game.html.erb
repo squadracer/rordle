@@ -1,4 +1,4 @@
-<%= turbo_frame_tag 'game_turbo_frame', class: "relative static h-full w-full flex flex-col justify-around", data: {controller: "game"} do %>
+<%= turbo_frame_tag 'game_turbo_frame', class: "relative static h-full w-full flex flex-col justify-around", data: {controller: "game", game_lineindex_value: answers.size, game_isvalidanswer_value: is_valid_answer} do %>
 
   <div class="absolute bg-logo h-full	w-full"></div>
   <% if game_won %>
