@@ -1,9 +1,7 @@
 # NEXT FEATURES
 - erreurs dans la console
 - bug de la doc
-- popin "Copied to your clipboard"
 - responsive -> bloc ri end_game modal
-- favicon
 
 # DIFFERENTS TYPES D'AIDE POSSIBLE
 - affichage du dico update en real time avec les mots morts enlevés ?
@@ -49,3 +47,5 @@
 - ✅ header -> remove tooltip et mettre texte
 - ✅ bug affichage au dessus de la modale de fin de partie
 - ✅ animation open method list
+- ✅ favicon
+- ✅ run sur le serveur "gem rdoc --all --ri --no-rdoc"
