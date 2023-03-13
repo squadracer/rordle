@@ -1,5 +1,4 @@
 # NEXT FEATURES
-- erreurs dans la console
 - bug de la doc
 - responsive -> bloc ri end_game modal
 

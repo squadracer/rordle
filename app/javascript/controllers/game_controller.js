@@ -26,6 +26,11 @@ export default class Game extends Controller {
       window.removeEventListener('keydown', this.boundNext);
     }
 
+    reset_line_index() {
+      this.lineindexValue = 0;
+      this.pos = [this.lineindexValue, 0];
+    }
+
     next(event) {
       const input = event.key.toUpperCase();
       const key = document.getElementById(this.pos.join('-'));
@@ -78,7 +83,7 @@ export default class Game extends Controller {
 }
 
 async function flipLetterAnimation(position) {
-  const last_line_letters = document.getElementById("line-" + (position[0] - 1) ).children;
+  const last_line_letters = document.getElementById("line-" + (position[0] - 1) )?.children || [];
   for(let i = 0; i < last_line_letters.length; i++) {
     last_line_letters[i].classList.add("bg-red-flip");
     last_line_letters[i].classList.add("border-red-flip");

@@ -1,7 +1,11 @@
-<div>
-    <p>The word was:</p>
-    <p><b><%= rails_method %></b></p>
+<div class="mb-8">
+    <p class="mb-8">The word was:</p>
+    <div class="flex justify-center	">
+        <% rails_method.chars.each do |letter| %>
+            <div class="text-white flex justify-center items-center font-semibold mx-2 text-3xl bg-red-400 rounded gap-4 h-14 w-14  border-b-[2px] border-red-700 hover:border-b-[0px]""><%= letter %></div>
+        <% end %>
+    </div>
 </div>
 <div class="end_game_modal">
-    <pre><%= rails_method_doc%></pre>
+    <pre><%= rails_method_doc %></pre>
 </div>

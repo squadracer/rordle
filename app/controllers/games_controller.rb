@@ -2,9 +2,9 @@ class GamesController < ApplicationController
     def index
         session[:answers] = []
         if params[:infinite_mode]
-            session[:rails_method] = "FILTER"
+            session[:rails_method] = random_rails_method.sample
         else
-            session[:rails_method] = "FILTER"
+            session[:rails_method] = random_rails_method.sample(1, random: Random.new((Date.current - Date.new(2018,04,23)).days.to_i)).first
         end
         session[:game_won] = false
         @rails_method = session[:rails_method]

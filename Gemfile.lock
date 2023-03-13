@@ -166,6 +166,7 @@ GEM
       thor (~> 1.0)
       zeitwerk (~> 2.5)
     rake (13.0.6)
+    rdoc (4.3.0)
     regexp_parser (2.6.0)
     rexml (3.2.5)
     rspec-core (3.12.0)
@@ -250,6 +251,7 @@ DEPENDENCIES
   pry-byebug
   puma (~> 5.0)
   rails (~> 7.0.4)
+  rdoc (~> 4.2, >= 4.2.2)
   rspec-rails
   selenium-webdriver
   simplecov
