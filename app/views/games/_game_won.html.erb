@@ -5,12 +5,12 @@
         </path>
     </svg>
     <div class="text-center">
-        <h3 class="md:text-2xl text-base text-gray-900 font-semibold text-center">You Won !</h3>
+        <h3 class="md:text-2xl text-base text-gray-900 font-semibold text-center">You won !</h3>
         <div class="text-gray-900 my-2">
             <p>Thank you for completing today's challenge !</p>
-            <p>You achieved it in <b><%= answers.size %></b> attempt(s).</p>
+            <p>You achieved it in <b><%= answers_size %></b> attempt(s).</p>
         </div>
         <%= render partial: 'shared/end_game_modal/rails_method_doc', locals: {rails_method: rails_method, rails_method_doc: rails_method_doc} %>
-        <%= render partial: 'shared/end_game_modal/bottom_buttons' %>
+        <%= render partial: 'shared/end_game_modal/bottom_buttons',  locals: {answers_size: answers_size, colors: colors} %>
     </div>
 <% end %>

@@ -1,9 +1,9 @@
 # NEXT FEATURES
-- explication du jeu (avec la version de Rails et Ruby)
 - erreurs dans la console
 - bug de la doc
-- pouvoir share son score
+- popin "Copied to your clipboard"
 - responsive -> bloc ri end_game modal
+- favicon
 
 # DIFFERENTS TYPES D'AIDE POSSIBLE
 - affichage du dico update en real time avec les mots morts enlevés ?

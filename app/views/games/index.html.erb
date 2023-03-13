@@ -1,6 +1,6 @@
-<!-- <h1 class="flex justify-center"><%= @rails_method %></h1> -->
 <%= render partial: 'shared/header' %>
 <%= render partial: 'shared/methods_list', locals: {methods_list: @methods_list} %>
+<%= turbo_frame_tag 'explanations_turbo_frame'%>
 <%= render partial: 'games/game',
     locals: {
         rails_method: @rails_method,
@@ -14,3 +14,4 @@
         alphabet: @alphabet
     }
 %>
+<%= render partial: 'shared/footer' %>

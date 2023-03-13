@@ -1,7 +1,10 @@
 <div class="flex justify-center mb-2">
     <div class="w-96 flex flex-wrap justify-center gap-1">
         <% alphabet.each do |letter, color| %>
-            <kbd class="mb-1 mx-0.5 flex h-12 w-10 
+            <kbd 
+            data-action="click->game#addLetter"
+            data-game-payload-param=<%= letter %>
+            class="mb-1 mx-0.5 flex h-12 w-10 
             cursor-pointer select-none items-center justify-center rounded 
             text-xs font-bold
             border-b-[2px] 
@@ -14,6 +17,33 @@
                 <%= letter %>
             </kbd>
         <% end %>
+        <kbd 
+            data-action="click->game#removeLetter"
+            class="mb-1 mx-0.5 flex h-12 w-14
+            cursor-pointer select-none items-center justify-center rounded 
+            text-xl font-bold
+            border-b-[2px] 
+            bg-slate-100
+            border-slate-0 
+            hover:bg-slate-200
+            hover:border-red-100
+            hover:border-b-[0px]
+            hover:border-t-[2px]">
+                ⌫
+        </kbd>
+        <kbd 
+            data-action="click->game#enterSolution"
+            class="mb-1 mx-0.5 flex h-12 w-14
+            cursor-pointer select-none items-center justify-center rounded 
+            text-xl font-bold
+            border-b-[2px] 
+            bg-slate-100
+            border-slate-0 
+            hover:bg-slate-200
+            hover:border-red-100
+            hover:border-b-[0px]
+            hover:border-t-[2px]">
+                ⏎
+        </kbd>
     </div>
-<div>
-
+</div>

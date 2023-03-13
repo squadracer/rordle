@@ -1,5 +1,17 @@
 <div class="my-10 text-center flex justify-between">
+    <div class="flex flex-col justify-between">
+        <p>Share your results:</p>
+        <div data-controller="share-answers" data-action="click->share-answers#copyToClipboard" class="text-left bg-red-200 rounded p-2" id="share_text">
+            Hey, I have challenged myself with today's RoRdle!
+            <br/>
+            <% colors.each_with_index do |color_line, index| %>
+                <% break if index >= answers_size %>
+                <% line = color_line.map {|color| (color == "green" ? "🟩" : (color == "orange" ? "🟧" : "⬛")) }.join %>
+                <%= line %>
+                <br/>
+            <% end %>
+            And you? 😁
+        </div>
+    </div>
     <a href="/infinite" class="m-auto bg-green-400 text-white font-semibold px-10 py-3 rounded">Play again</a>
-    <p class="text-gray-900 font-semibold my-4">||</p>
-    <a href="/share" class="m-auto bg-blue-400 text-white font-semibold px-10 py-3 rounded">Share</a>
 </div>

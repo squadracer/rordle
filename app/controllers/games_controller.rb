@@ -19,6 +19,19 @@ class GamesController < ApplicationController
         redirect_to controller: 'games', action: :index, infinite_mode: true
     end
 
+    def explanations
+        Rails.logger.info 'EXPLANATIONS'
+        respond_to do |format|
+            format.turbo_stream {
+                render turbo_stream:
+                    turbo_stream.replace(
+                        'explanations_turbo_frame',
+                        partial: 'shared/explanations'
+                    )
+            }
+        end
+    end
+
     def give_up
         send_stream(gave_up: true)
     end
