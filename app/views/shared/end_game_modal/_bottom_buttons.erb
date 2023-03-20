@@ -1,19 +1,21 @@
-<div class="my-10 text-center flex justify-between">
+<div class="my-10 text-center flex justify-between flex-col sm:flex-row">
     <div class="relative flex flex-col justify-between">
-        <div data-controller="share-answers" data-action="click->share-answers#copyToClipboard" class="z-10 text-left bg-red-50 rounded p-4 border-2 border-dashed border-red-300 cursor-pointer" id="share_text">
-            Hey, I have challenged myself with today's RoRdle!
-            <br/>
-            <% colors.each_with_index do |color_line, index| %>
-                <% break if index >= answers_size %>
-                <% line = color_line.map {|color| (color == "green" ? "🟩" : (color == "orange" ? "🟧" : "⬜️")) }.join %>
-                <%= line %>
+        <% unless infinite_mode%>
+            <div data-controller="share-answers" data-action="click->share-answers#copyToClipboard" class="z-10 text-left bg-red-50 rounded mx-4 mb-4 p-4 border-2 border-dashed border-red-300 cursor-pointer" id="share_text">
+                Hey, I have challenged myself with today's RoRdle!
                 <br/>
-            <% end %>
-            And you? 😁
-        </div>
-        <div class="flex w-full justify-center absolute bottom-0" id="copy-toast">
-            <p class="rounded text-white bottom-0 bg-red-500 p-2">Copied to your clipboard!</p>
-        </div>
+                <% colors.each_with_index do |color_line, index| %>
+                    <% break if index >= answers_size %>
+                    <% line = color_line.map {|color| (color == "green" ? "🟩" : (color == "orange" ? "🟧" : "⬜️")) }.join %>
+                    <%= line %>
+                    <br/>
+                <% end %>
+                And you? 😁
+            </div>
+            <div class="flex w-full justify-center absolute bottom-0" id="copy-toast">
+                <p class="rounded text-white bottom-0 bg-red-500 p-2 mb-4">Copied to your clipboard!</p>
+            </div>
+        <% end %>
     </div>
-    <a href="/infinite" data-action="click->game#reset_line_index" class="m-auto bg-green-400 text-white font-semibold px-10 py-3 rounded border-b-[2px] border-green-700 hover:border-b-[0px]">Play again</a>
+    <a href="/infinite" data-turbo-frame="_top" data-action="click->game#reset_line_index" class="m-auto bg-green-400 text-white font-semibold px-10 py-3 rounded border-b-[2px] border-green-700 hover:border-b-[0px]">Play again</a>
 </div>

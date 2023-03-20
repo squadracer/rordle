@@ -3,7 +3,8 @@ import { Controller } from "@hotwired/stimulus"
 export default class Game extends Controller {
     static values = {
       lineindex: Number,
-      isvalidanswer: Boolean
+      isvalidanswer: Boolean,
+      infiniteMode: Boolean
     }
     
     initialize() {
@@ -76,7 +77,7 @@ export default class Game extends Controller {
             'Content-Type': 'application/json',
             'X-CSRF-Token': csrfToken
         },
-        body: JSON.stringify({ answer: this.answer })
+        body: JSON.stringify({ answer: this.answer, infinite_mode: this.infiniteModeValue })
       }).then(response => response.text()).then(html => Turbo.renderStreamMessage(html));
       this.answer = '';
     }

@@ -1,7 +1,6 @@
 # NEXT FEATURES
 - bug de la doc
-- responsive -> bloc ri end_game modal
-
+- nom de domaine
 # DIFFERENTS TYPES D'AIDE POSSIBLE
 - affichage du dico update en real time avec les mots morts enlevés ?
 - donner underscore si trop long (donner le ! ou le ? si il y a)
@@ -48,3 +47,5 @@
 - ✅ animation open method list
 - ✅ favicon
 - ✅ run sur le serveur "gem rdoc --all --ri --no-rdoc"
+- ✅ mode infinite plus clair
+- ✅ responsive -> bloc ri end_game modal

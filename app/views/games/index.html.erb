@@ -1,6 +1,7 @@
 <%= render partial: 'shared/header' %>
 <%= render partial: 'shared/methods_list', locals: {methods_list: @methods_list} %>
 <%= turbo_frame_tag 'explanations_turbo_frame'%>
+<p class="font-bold mb-4"><%= "You are in infinite mode, only the first method of the day is common to all" if @infinite_mode %></p>
 <%= render partial: 'games/game',
     locals: {
         rails_method: @rails_method,
@@ -11,7 +12,8 @@
         gave_up: false,
         methods_list: [],
         colors: @colors,
-        alphabet: @alphabet
+        alphabet: @alphabet,
+        infinite_mode: @infinite_mode
     }
 %>
 <%= render partial: 'shared/footer' %>

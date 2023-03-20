@@ -1,7 +1,8 @@
 class GamesController < ApplicationController
     def index
         session[:answers] = []
-        if params[:infinite_mode]
+        @infinite_mode = params[:infinite_mode] || false
+        if @infinite_mode
             session[:rails_method] = random_rails_method.sample
         else
             session[:rails_method] = random_rails_method.sample(1, random: Random.new((Date.current - Date.new(2018,04,23)).days.to_i)).first
@@ -12,7 +13,7 @@ class GamesController < ApplicationController
         @alphabet = init_alphabet
         @same_length_methods_list = nil
         @all_methods_list = nil
-        @methods_list = same_length_methods_list
+        @methods_list = same_length_methods_list        
     end
 
     def infinite
@@ -63,7 +64,8 @@ class GamesController < ApplicationController
                             rails_method_doc: MethodsHelper.get_doc(session[:rails_method].downcase),
                             colors: colors,
                             alphabet: alphabet,
-                            methods_list: same_length_methods_list
+                            methods_list: same_length_methods_list,
+                            infinite_mode: params[:infinite_mode]
                         }
                     )
             }

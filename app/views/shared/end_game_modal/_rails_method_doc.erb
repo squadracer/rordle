@@ -2,10 +2,10 @@
     <p class="mb-8">The word was:</p>
     <div class="flex justify-center	">
         <% rails_method.chars.each do |letter| %>
-            <div class="text-white flex justify-center items-center font-semibold mx-2 text-3xl bg-red-400 rounded gap-4 h-14 w-14  border-b-[2px] border-red-700 hover:border-b-[0px]""><%= letter %></div>
+            <div class="text-white flex justify-center items-center font-semibold mx-2 text-sm bg-red-400 rounded gap-4 h-8 w-8  border-b-[2px] border-red-700 hover:border-b-[0px] sm:text-3xl sm:h-14 sm:w-14"><%= letter %></div>
         <% end %>
     </div>
 </div>
-<div class="end_game_modal">
+<div class="end_game_modal hidden sm:block">
     <pre><%= rails_method_doc %></pre>
 </div>

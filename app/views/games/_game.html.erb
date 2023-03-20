@@ -1,10 +1,10 @@
-<%= turbo_frame_tag 'game_turbo_frame', class: "relative static h-full w-full flex flex-col justify-around", data: {controller: "game", game_lineindex_value: answers.size, game_isvalidanswer_value: is_valid_answer} do %>
+<%= turbo_frame_tag 'game_turbo_frame', class: "relative static h-full w-full flex flex-col justify-around", data: {controller: "game", game_lineindex_value: answers.size, game_isvalidanswer_value: is_valid_answer, game_infinite_mode_value: infinite_mode} do %>
 
   <div class="absolute bg-logo h-full	w-full"></div>
   <% if game_won %>
-    <%= render partial: 'games/game_won', locals: { rails_method: rails_method, rails_method_doc: rails_method_doc, answers_size: answers.size, colors: colors} %>
+    <%= render partial: 'games/game_won', locals: { rails_method: rails_method, rails_method_doc: rails_method_doc, answers_size: answers.size, colors: colors, infinite_mode: infinite_mode} %>
   <% elsif answers.size >= 6 || gave_up %>
-    <%= render partial: 'games/game_lost', locals: { rails_method: rails_method, rails_method_doc: rails_method_doc, answers_size: answers.size, colors: colors} %>
+    <%= render partial: 'games/game_lost', locals: { rails_method: rails_method, rails_method_doc: rails_method_doc, answers_size: answers.size, colors: colors, infinite_mode: infinite_mode} %>
   <% end %>
   <%= render partial: 'shared/grid/answers_grid', locals: { rails_method: rails_method, answers: answers, colors: colors, is_valid_answer: is_valid_answer}  %>
   <%= render partial: 'shared/keyboard/keyboard', locals: { alphabet: alphabet}  %>
