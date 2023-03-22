@@ -1,0 +1,1 @@
+postdeploy: gem rdoc --all --ri --no-rdoc

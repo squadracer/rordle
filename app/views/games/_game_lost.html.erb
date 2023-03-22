@@ -6,7 +6,7 @@
                 <p><%="Retry to win tomorrow's challenge."%></p>
             </div>
             <%= render partial: 'shared/end_game_modal/rails_method_doc', locals: {rails_method: rails_method, rails_method_doc: rails_method_doc} %>
-            <%= render partial: 'shared/end_game_modal/bottom_buttons', locals: {answers_size: answers_size, colors: colors} %>
+            <%= render partial: 'shared/end_game_modal/bottom_buttons', locals: {answers_size: answers_size, colors: colors, infinite_mode: infinite_mode} %>
         </div>
     </div>
 <% end %>
