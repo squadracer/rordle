@@ -1,1 +1,1 @@
-postdeploy: gem rdoc --all --ri --no-rdoc
+web: bin/start.sh
