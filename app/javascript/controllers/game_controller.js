@@ -6,7 +6,7 @@ export default class Game extends Controller {
       isvalidanswer: Boolean,
       infiniteMode: Boolean
     }
-    
+
     initialize() {
       this.pos = [this.lineindexValue, 0];
       this.answer = '';
@@ -47,6 +47,8 @@ export default class Game extends Controller {
 
     addLetter(event) {
       const key = document.getElementById(this.pos.join('-'));
+      if (!key)
+        return;
       const input = event.key?.toUpperCase() || event.params.payload;
       this.answer += input;
       key.innerHTML = input;

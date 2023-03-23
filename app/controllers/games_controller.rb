@@ -13,7 +13,7 @@ class GamesController < ApplicationController
         @alphabet = init_alphabet
         @same_length_methods_list = nil
         @all_methods_list = nil
-        @methods_list = same_length_methods_list        
+        @methods_list = same_length_methods_list
     end
 
     def infinite
