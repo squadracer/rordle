@@ -1,9 +1,6 @@
-<div data-controller=<%= data_controller_name %> class="z-10 fixed w-screen h-screen bg-black/60 flex justify-center items-center inset-0">
-    <div class="flex flex-col justify-center items-center bg-red-100 border-b-[2px] border-red-300 rounded m-2">
-        <a data-action="click->game#reset_line_index" href="/" class="self-end m-0 text-red-400 text-white font-extrabold px-4 py-2 rounded">X</a>
-        <div class="px-10 pb-6">
-            <%= yield %>
-        </div>
+<div data-controller=<%= data_controller_name %> class="z-50 fixed w-screen h-screen bg-black/60 flex justify-center items-center inset-0">
+    <div class="md:p-8 p-2 relative flex flex-col justify-center items-center bg-red-100 border-b-[2px] border-red-300 rounded m-2"> 
+        <a data-action="click->game#reset_line_index" href="/" class="absolute md:top-4 top-1 md:right-5 right-3 m-0 text-red-400 font-extrabold rounded">X</a>
+        <%= yield %>
     </div>
 </div>
-

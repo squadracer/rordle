@@ -1,4 +1,4 @@
-<div class="my-10 text-center flex justify-between flex-col sm:flex-row">
+<div class="mt-10 text-center flex justify-between flex-col sm:flex-row">
     <div class="relative flex flex-col justify-between">
         <% unless infinite_mode%>
             <div data-controller="share-answers" data-action="click->share-answers#copyToClipboard" class="z-10 text-left bg-red-50 rounded mx-4 mb-4 p-4 border-2 border-dashed border-red-300 cursor-pointer" id="share_text">
@@ -10,7 +10,7 @@
                     <%= line %>
                     <br/>
                 <% end %>
-                Challenge yourself on https://rordle.osc-fr1.scalingo.io/ 💪
+                Challenge yourself on https://rordle.app 💪
             </div>
             <div class="flex w-full justify-center absolute bottom-0" id="copy-toast">
                 <p class="rounded text-white bottom-0 bg-red-500 p-2 mb-4">Copied to your clipboard!</p>

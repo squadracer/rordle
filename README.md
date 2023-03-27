@@ -1,6 +1,7 @@
 # NEXT FEATURES
-- bug de la doc
-- nom de domaine
+- bug clavier de l'interface
+- check MR sib
+
 # DIFFERENTS TYPES D'AIDE POSSIBLE
 - affichage du dico update en real time avec les mots morts enlevés ?
 - donner underscore si trop long (donner le ! ou le ? si il y a)
@@ -49,3 +50,5 @@
 - ✅ run sur le serveur "gem rdoc --all --ri --no-rdoc"
 - ✅ mode infinite plus clair
 - ✅ responsive -> bloc ri end_game modal
+- ✅ nom de domaine
+

@@ -1,6 +1,6 @@
 .methods_list {
-  left: -300px; 
-  transition: 1s;
+  left: -500px; 
+  transition: 0.5s;
 }
 
 .methods_list > div {
@@ -15,5 +15,5 @@
 
 .toggle-list {
   left: 0px;
-  transition: 1s;
+  transition: 0.5s;
 }
