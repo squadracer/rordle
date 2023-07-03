@@ -76,4 +76,4 @@ end
 gem "pg", "~> 1.4"
 
 gem "tty_string", "~> 1.1"
-gem 'rdoc', '~> 4.2', '>= 4.2.2'
+gem 'rdoc'
