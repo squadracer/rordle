@@ -77,3 +77,4 @@ gem "pg", "~> 1.4"
 
 gem "tty_string", "~> 1.1"
 gem 'rdoc'
+gem 'psych', "~> 5.0.0"
