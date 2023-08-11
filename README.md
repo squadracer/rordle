@@ -23,7 +23,7 @@
 - ✅ header stylé
 - ✅ rename 'letter'
 - ✅ bloquer la reception de la touche 'ENTREE' si la longueur de la solution n'est pas bonne
-- ✅ vérouillage du submit si pas toutes le mot rempli
+- ✅ verrouillage du submit si pas toutes le mot rempli
 - ✅ pouvoir effacer quand on a taper exactement `rails_method.size` lettres
 - ✅ enlever les méthodes d'une lettre (ex: '!', '?')
 - ✅ pouvoir gagner le jeu (https://github.com/loonywizard/js-confetti)
