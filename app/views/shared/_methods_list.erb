@@ -1,4 +1,4 @@
-<%= turbo_frame_tag 'modal_turbo_frame', class: "z-10	methods_list absolute top-0" do %>
+<div id='modal_turbo_frame' class='z-10	methods_list absolute top-0'>
   <div class="overflow-auto h-screen pl-6 pt-16">
     <ul class="">
     <% methods_list.each do |method_name| %>
@@ -6,4 +6,4 @@
     <% end %>
     </ul>
   </div>
-<% end %>
+</div>

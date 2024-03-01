@@ -48,7 +48,7 @@ class GamesController < ApplicationController
     private
 
     def send_stream(args)
-        colors, alphabet = compute_colors(session[:rails_method], session[:answers]) 
+        colors, alphabet = compute_colors(session[:rails_method], session[:answers])
         respond_to do |format|
             format.turbo_stream {
                 render turbo_stream:
@@ -87,7 +87,7 @@ class GamesController < ApplicationController
             end
             answer.chars.each_with_index do |char, char_index|
                 if colors[answer_index][char_index].nil? && remaining_chars.include?(char)
-                    colors[answer_index][char_index] = 'orange' 
+                    colors[answer_index][char_index] = 'orange'
                     alphabet[char] = 'orange-400'
                     remaining_chars.delete_at(remaining_chars.index(char) || remaining_chars.length)
                 elsif alphabet[char] == 'slate-100'
@@ -109,6 +109,7 @@ class GamesController < ApplicationController
 
     def same_length_methods_list
         @same_length_methods_list ||= random_rails_method.uniq.filter {|method_name| method_name.size == session[:rails_method].size}
+        @same_length_methods_list.reject { |method_name| session[:answers].include?(method_name) }
     end
 
     def random_rails_method

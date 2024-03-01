@@ -1,14 +1,16 @@
 .methods_list {
-  left: -500px; 
+  left: -500px;
   transition: 0.5s;
 }
 
-.methods_list > div {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+.methods_list>div {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
-.methods_list > div::-webkit-scrollbar {
+.methods_list>div::-webkit-scrollbar {
   display: none;
 }
 
