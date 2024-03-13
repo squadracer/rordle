@@ -65,7 +65,8 @@ class GamesController < ApplicationController
                             colors: colors,
                             alphabet: alphabet,
                             methods_list: same_length_methods_list,
-                            infinite_mode: params[:infinite_mode]
+                            infinite_mode: params[:infinite_mode],
+                            list_toggled: params[:list_toggled]
                         }
                     )
             }
