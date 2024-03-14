@@ -100,12 +100,20 @@ export default class Game extends Controller {
   }
 
   addCharacter(positionStr, character) {
-    const y_length = document.querySelectorAll('.w-full.flex.justify-center.gap-1.h-14').length; // line on grid
-    console.log(y_length);
+    const y_length = document.querySelectorAll('.w-full.flex.justify-center.gap-1.h-14').length; // lines on grid currently hard coded at 6 in view
     for (let y_pos = 0; y_pos < y_length; y_pos++) {
       const element = document.getElementById(`${y_pos}-${positionStr}`);
       element.innerHTML = character;
     }
+  }
+
+  fillFromList(event) {
+    const method = event.target.innerHTML;
+    for (let i = 0; i < method.length; i++) {
+      const tempEvent = { params: { payload: method[i] } };
+      this.addLetter(tempEvent);
+    }
+    this.enterSolution();
   }
 }
 

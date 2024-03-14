@@ -51,4 +51,3 @@
 - ✅ mode infinite plus clair
 - ✅ responsive -> bloc ri end_game modal
 - ✅ nom de domaine
-
