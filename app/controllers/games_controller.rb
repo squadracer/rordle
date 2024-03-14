@@ -14,6 +14,7 @@ class GamesController < ApplicationController
         @same_length_methods_list = nil
         @all_methods_list = nil
         @methods_list = same_length_methods_list
+        @special_characters = special_characters_and_positions
     end
 
     def infinite
@@ -66,7 +67,8 @@ class GamesController < ApplicationController
                             alphabet: alphabet,
                             methods_list: same_length_methods_list,
                             infinite_mode: params[:infinite_mode],
-                            list_toggled: params[:list_toggled]
+                            list_toggled: params[:list_toggled],
+                            special_characters: special_characters_and_positions
                         }
                     )
             }
@@ -121,5 +123,12 @@ class GamesController < ApplicationController
 
     def init_alphabet
         (('A'..'Z').to_a + ['?', '_', '!']).map { |char| [char, 'slate-100'] }.to_h
+    end
+
+    def special_characters_and_positions
+      session[:rails_method].chars.each_with_index.reduce([]) do |acc, (curr, index)|
+        acc << { x_pos: index, char: curr } if curr.match?(/!|\?|_/)
+        acc
+      end
     end
 end

@@ -4,7 +4,8 @@ export default class Game extends Controller {
   static values = {
     lineindex: Number,
     isvalidanswer: Boolean,
-    infiniteMode: Boolean
+    infiniteMode: Boolean,
+    specialCharacterPositions: Array
   }
 
   initialize() {
@@ -12,6 +13,7 @@ export default class Game extends Controller {
     this.answer = '';
     this.boundNext = this.next.bind(this);
     this.isValidAnswer = this.isvalidanswerValue;
+    this.addCharacters();
   }
 
   async connect() {
@@ -86,6 +88,24 @@ export default class Game extends Controller {
 
   methodListToggled() {
     return document.getElementById("modal_turbo_frame").classList.contains('toggle-list');
+  }
+
+  addCharacters() {
+    const numberOfChars = this.specialCharacterPositionsValue.length
+    for (let i = 0; i < numberOfChars; i++) {
+      const characterToAdd = this.specialCharacterPositionsValue[i].char;
+      const xPositionToAdd = this.specialCharacterPositionsValue[i].x_pos;
+      this.addCharacter(xPositionToAdd, characterToAdd);
+    }
+  }
+
+  addCharacter(positionStr, character) {
+    const y_length = document.querySelectorAll('.w-full.flex.justify-center.gap-1.h-14').length; // line on grid
+    console.log(y_length);
+    for (let y_pos = 0; y_pos < y_length; y_pos++) {
+      const element = document.getElementById(`${y_pos}-${positionStr}`);
+      element.innerHTML = character;
+    }
   }
 }
 

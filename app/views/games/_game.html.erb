@@ -1,4 +1,12 @@
-<%= turbo_frame_tag 'game_turbo_frame', class: "relative static h-full w-full flex flex-col justify-around", data: {controller: "game", game_lineindex_value: answers.size, game_isvalidanswer_value: is_valid_answer, game_infinite_mode_value: infinite_mode} do %>
+<%= turbo_frame_tag 'game_turbo_frame', class: "relative static h-full w-full flex flex-col justify-around",
+                                        data: {
+                                          controller: "game",
+                                          game_lineindex_value: answers.size,
+                                          game_isvalidanswer_value: is_valid_answer,
+                                          game_infinite_mode_value: infinite_mode,
+                                          game_special_character_positions_value: special_characters
+                                        } do %>
+
   <%= render partial: 'shared/methods_list', locals: { methods_list:, list_toggled: } %>
   <div class="absolute bg-logo h-full	w-full"></div>
   <% if game_won %>
