@@ -13,7 +13,6 @@ export default class Game extends Controller {
     this.answer = '';
     this.boundNext = this.next.bind(this);
     this.isValidAnswer = this.isvalidanswerValue;
-    this.addCharacters();
   }
 
   async connect() {
@@ -100,10 +99,13 @@ export default class Game extends Controller {
   }
 
   addCharacter(positionStr, character) {
-    const y_length = document.querySelectorAll('.w-full.flex.justify-center.gap-1.h-14').length; // lines on grid currently hard coded at 6 in view
+    const y_length = document.querySelectorAll('.line-key-container').length; // lines on grid currently hard coded at 6 in view
+    const linesToSkip = this.pos[0]; // skip lines that have been filled by player
     for (let y_pos = 0; y_pos < y_length; y_pos++) {
-      const element = document.getElementById(`${y_pos}-${positionStr}`);
-      element.innerHTML = character;
+      if (y_pos >= linesToSkip) {
+        const element = document.getElementById(`${y_pos}-${positionStr}`);
+        element.innerHTML = character;
+      }
     }
   }
 
