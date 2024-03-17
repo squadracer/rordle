@@ -136,7 +136,7 @@ class GamesController < ApplicationController
     def calculate_score
       # time in seconds multiplied by answers (lowest scores win)
       if session[:game_won]
-        (params[:time_taken] * session[:answers].size)
+        (params[:game][:time_taken] * session[:answers].size)
       else
         99999999999
       end
