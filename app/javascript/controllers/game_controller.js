@@ -80,7 +80,12 @@ export default class Game extends Controller {
         'Content-Type': 'application/json',
         'X-CSRF-Token': csrfToken
       },
-      body: JSON.stringify({ answer: this.answer, infinite_mode: this.infiniteModeValue, list_toggled: this.methodListToggled() })
+      body: JSON.stringify({
+        answer: this.answer,
+        infinite_mode: this.infiniteModeValue,
+        list_toggled: this.methodListToggled(),
+        time_taken: this.timeTaken()
+      })
     }).then(response => response.text()).then(html => Turbo.renderStreamMessage(html));
     this.answer = '';
   }
@@ -99,8 +104,8 @@ export default class Game extends Controller {
   }
 
   addCharacter(positionStr, character) {
-    const y_length = document.querySelectorAll('.line-key-container').length; // lines on grid currently hard coded at 6 in view
-    const linesToSkip = this.pos[0]; // skip lines that have been filled by player
+    const y_length = document.querySelectorAll('.line-key-container').length;
+    const linesToSkip = this.pos[0];
     for (let y_pos = 0; y_pos < y_length; y_pos++) {
       if (y_pos >= linesToSkip) {
         const element = document.getElementById(`${y_pos}-${positionStr}`);
@@ -116,6 +121,10 @@ export default class Game extends Controller {
       this.addLetter(tempEvent);
     }
     this.enterSolution();
+  }
+
+  timeTaken() {
+    return Number(document.getElementById('timer-in-seconds').innerText);
   }
 }
 

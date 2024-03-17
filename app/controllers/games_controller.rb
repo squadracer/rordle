@@ -68,7 +68,8 @@ class GamesController < ApplicationController
                             methods_list: same_length_methods_list,
                             infinite_mode: params[:infinite_mode],
                             list_toggled: params[:list_toggled],
-                            special_characters: special_characters_and_positions
+                            special_characters: special_characters_and_positions,
+                            score: calculate_score
                         }
                     )
             }
@@ -129,6 +130,15 @@ class GamesController < ApplicationController
       session[:rails_method].chars.each_with_index.reduce([]) do |acc, (curr, index)|
         acc << { x_pos: index, char: curr } if curr.match?(/!|\?|_/)
         acc
+      end
+    end
+
+    def calculate_score
+      # time in seconds multiplied by answers (lowest scores win)
+      if session[:game_won]
+        (params[:time_taken] * session[:answers].size)
+      else
+        99999999999
       end
     end
 end

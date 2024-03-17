@@ -1,6 +1,7 @@
 <%= render partial: 'shared/header' %>
 <%= turbo_frame_tag 'explanations_turbo_frame'%>
 <p class="font-bold mb-4"><%= "You are in infinite mode, only the first method of the day is common to all" if @infinite_mode %></p>
+<%= render partial: 'games/timer' %>
 <%= render partial: 'games/game',
     locals: {
         rails_method: @rails_method,
