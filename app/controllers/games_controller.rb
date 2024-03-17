@@ -14,6 +14,7 @@ class GamesController < ApplicationController
         @same_length_methods_list = nil
         @all_methods_list = nil
         @methods_list = same_length_methods_list
+        @special_characters = special_characters_and_positions
     end
 
     def infinite
@@ -48,7 +49,7 @@ class GamesController < ApplicationController
     private
 
     def send_stream(args)
-        colors, alphabet = compute_colors(session[:rails_method], session[:answers]) 
+        colors, alphabet = compute_colors(session[:rails_method], session[:answers])
         respond_to do |format|
             format.turbo_stream {
                 render turbo_stream:
@@ -65,7 +66,10 @@ class GamesController < ApplicationController
                             colors: colors,
                             alphabet: alphabet,
                             methods_list: same_length_methods_list,
-                            infinite_mode: params[:infinite_mode]
+                            infinite_mode: params[:infinite_mode],
+                            list_toggled: params[:list_toggled],
+                            special_characters: special_characters_and_positions,
+                            score: calculate_score
                         }
                     )
             }
@@ -87,7 +91,7 @@ class GamesController < ApplicationController
             end
             answer.chars.each_with_index do |char, char_index|
                 if colors[answer_index][char_index].nil? && remaining_chars.include?(char)
-                    colors[answer_index][char_index] = 'orange' 
+                    colors[answer_index][char_index] = 'orange'
                     alphabet[char] = 'orange-400'
                     remaining_chars.delete_at(remaining_chars.index(char) || remaining_chars.length)
                 elsif alphabet[char] == 'slate-100'
@@ -109,6 +113,7 @@ class GamesController < ApplicationController
 
     def same_length_methods_list
         @same_length_methods_list ||= random_rails_method.uniq.filter {|method_name| method_name.size == session[:rails_method].size}
+        @same_length_methods_list.reject { |method_name| session[:answers].include?(method_name) }
     end
 
     def random_rails_method
@@ -119,5 +124,21 @@ class GamesController < ApplicationController
 
     def init_alphabet
         (('A'..'Z').to_a + ['?', '_', '!']).map { |char| [char, 'slate-100'] }.to_h
+    end
+
+    def special_characters_and_positions
+      session[:rails_method].chars.each_with_index.reduce([]) do |acc, (curr, index)|
+        acc << { x_pos: index, char: curr } if curr.match?(/!|\?|_/)
+        acc
+      end
+    end
+
+    def calculate_score
+      # time in seconds multiplied by answers (lowest scores win)
+      if session[:game_won]
+        (params[:game][:time_taken] * session[:answers].size)
+      else
+        99999999999
+      end
     end
 end

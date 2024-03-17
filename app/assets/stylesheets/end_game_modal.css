@@ -13,8 +13,29 @@
 }
 
 @keyframes fade {
-  0% {bottom: 0px; }
-  20% {bottom: -45px;}
-  80% {bottom: -45px;}
-  100% {bottom: 0px; }
+  0% {
+    bottom: 0px;
+  }
+
+  20% {
+    bottom: -45px;
+  }
+
+  80% {
+    bottom: -45px;
+  }
+
+  100% {
+    bottom: 0px;
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  /* https://stackoverflow.com/questions/66416614/how-to-create-scrollable-element-in-tailwind-without-a-scrollbar */
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

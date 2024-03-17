@@ -1,8 +1,8 @@
-<%= turbo_frame_tag 'modal_turbo_frame', class: "z-10	methods_list absolute top-0" do %>
-  <div class="overflow-auto h-screen pl-6 pt-16">
+<%= turbo_frame_tag 'modal_turbo_frame', class: "z-10	methods_list absolute top-0 #{'toggle-list' if list_toggled}" do %>
+  <div class="overflow-auto h-screen pl-6">
     <ul class="">
     <% methods_list.each do |method_name| %>
-      <li class="text-lg font-bold mt-6 p-2 bg-slate-50 rounded-md	"><%= method_name %></li>
+      <li class="text-lg font-bold mt-6 p-2 bg-slate-50 rounded-md cursor-pointer hover:bg-slate-200" data-action="click->game#fillFromList"><%= method_name %></li>
     <% end %>
     </ul>
   </div>
